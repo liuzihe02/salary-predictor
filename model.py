@@ -11,6 +11,7 @@ import pandas as pd
 import pickle
 import requests
 import json
+import joblib
 
 # Importing the dataset
 dataset = pd.read_csv('Salary_Data.csv')
@@ -30,8 +31,8 @@ regressor.fit(X_train, y_train)
 y_pred = regressor.predict(X_test)
 
 # Saving model using pickle
-pickle.dump(regressor, open('model.pkl','wb'))
+with open('web_api/abalone_predictor.joblib', 'wb') as f:
+    joblib.dump(regressor, f)
+with open('web_application/abalone_predictor.joblib', 'wb') as f:
+    joblib.dump(regressor, f)
 
-# Loading model to compare the results
-model = pickle.load( open('model.pkl','rb'))
-print(model.predict([[1.8]]))

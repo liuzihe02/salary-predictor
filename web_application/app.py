@@ -1,11 +1,12 @@
 import numpy as np
 #request object here contains the data the client (e.g.a browser) has sent to my app
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
+from joblib import load
 import pickle
 
 #app is an instant of Flask
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
+model = load('abalone_predictor.joblib')
 
 @app.route('/')
 def home():
