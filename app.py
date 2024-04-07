@@ -1,7 +1,9 @@
 import numpy as np
+#request object here contains the data the client (e.g.a browser) has sent to my app
 from flask import Flask, request, jsonify, render_template
 import pickle
 
+#app is an instant of Flask
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
@@ -9,7 +11,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict_dynamic',methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
@@ -20,19 +22,20 @@ def predict():
 
     output = round(prediction[0], 2)
 
+    #basically makes a new html instance, with prediction_test filed in
     return render_template('index.html', prediction_text='Salary is {}'.format(output))
 
 
-@app.route('/predict_api',methods=['POST'])
-def predict_api():
-    '''
-    For direct API calls trought request
-    '''
-    data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
+# @app.route('/predict_api',methods=['POST'])
+# def predict_api():
+#     '''
+#     For direct API calls trought request
+#     '''
+#     data = request.get_json(force=True)
+#     prediction = model.predict([np.array(list(data.values()))])
 
-    output = prediction[0]
-    return jsonify(output)
+#     output = prediction[0]
+#     return jsonify(output)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,5 +1,7 @@
 numpy
-sklearn
+scikit-learn
 requests
 flask
 gunicorn
+matplotlib
+pandas
