@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+ <div>
+	
+	</div>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="YearsExperience" placeholder="YearsExperience" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
+<!-- comment 
+In your HTML file (index.html), the <form> element is used to submit data to the Flask application. Let's break down the <form> tag and its attributes:
+
+  <form action="{{ url_for('predict') }}" method="post">
+  1. action attribute:
+  - The action attribute specifies the URL or route where the form data will be submitted when the form is submitted.
+  - In this case, {{ url_for('predict') }} is a Jinja2 template expression that generates the URL for the /predict route.
+  - The url_for() function is a convenient way to generate URLs dynamically in Flask templates. It takes the endpoint name (the name of the PYTHON FUNCTION) as an argument and returns the corresponding URL.
+  - This is useful because if you change the route or URL structure in your Flask application, you only need to update the route in the Flask app, not the HTML
+
+  2. method attribute:
+  The method attribute specifies the HTTP method to be used when submitting the form data.
+  In this case, method="post" indicates that the form data will be sent using the HTTP POST method.
+  The POST method is commonly used when submitting form data because it allows sending data in the request body, which is more secure and suitable for sending larger amounts of data compared to the GET method.
+  When the form is submitted (e.g., by clicking the "Predict" button), the following steps occur:
+  -->
