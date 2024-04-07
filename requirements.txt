@@ -5,3 +5,4 @@ flask
 gunicorn
 matplotlib
 pandas
+flask_wtf

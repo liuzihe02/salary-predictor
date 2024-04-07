@@ -3,23 +3,12 @@ A project for deploying a salary predictor linear regression model using Flask A
 
 It project predicts the salary of the employee based on the experience.
 
-Flask is a web framework for Python, meaning that it provides functionality for building APIs and web applications. In this tutorial, we will explore:
-
-1. using Flask to create a RESTful web API to interface with a machine leanring model; and,
-2. using Flask to create a simple web application that integrates our API with some basic html.
+Flask is a web framework for Python, meaning that it provides functionality for building APIs and web applications. In this tutorial, we'll use Flask to create a simple web application that integrates our API with some basic html.
 
 ## Directory Structure and Environment
 
 ```
-flask
-├── build_model.ipynb  # this notebook contains the model building code
-├── web_api
-│   └── abalone_predictor.joblib  # this is the machine learning model we have built locally
-│   └── app.py  # the file that defines our flask API
-│   └── Procfile  # required by Heroku to help start flask app
-│   └── requirements.txt  # file containing required packages
-│   
-└── web_application
+└── root
     └── abalone_predictor.joblib  # this is the machine learning model we have built locally
     └── app.py  # the file that defines our flask API
     └── Procfile  # required by Heroku to help start flask app

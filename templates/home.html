@@ -1,41 +1,34 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+    <title>Abalone Prediction Service</title>
 </head>
 
 <body>
- <div class="login">
- <div>
-	
-	</div>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="YearsExperience" placeholder="YearsExperience" required="required" />
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-
-   <br>
-   <br>
-   {{ prediction_text }}
-
- </div>
-
-
+    <div class="container m-1">
+        <h1>Salary Predictor</h1>
+        <h3 class="mb-4">Please enter your years of experience below:</h3>
+        <form method="POST">
+            {# This hidden_tag is a CSRF security feature. #}
+            {{ form.hidden_tag() }}
+            {{ form.exp.label }} {{form.exp}}
+            <br>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
 </body>
+
 </html>
 
-<!-- comment 
+<!-- Note that without WTForms, you can set the action of the form to the appropriate url
 In your HTML file (index.html), the <form> element is used to submit data to the Flask application. Let's break down the <form> tag and its attributes:
 
   <form action="{{ url_for('predict') }}" method="post">
